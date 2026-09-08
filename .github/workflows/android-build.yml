@@ -18,11 +18,11 @@ jobs:
       - uses: android-actions/setup-android@v3
       - name: Install Android SDK
         run: sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
-      - name: Verify module structure
+      - name: Verify TunNet module structure
         run: python3 tools/verify_structure.py
-      - name: Build APKs
-        run: gradle :DemoTarget:assembleDebug :DemoLsp:assembleDebug
+      - name: Build LSPosed module
+        run: gradle :DemoLsp:assembleDebug
       - uses: actions/upload-artifact@v4
         with:
-          name: LspIdentityLab-apks
-          path: '**/build/outputs/apk/**/*.apk'
+          name: TunNet-LspIdentityLab
+          path: 'DemoLsp/build/outputs/apk/**/*.apk'
